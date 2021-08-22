@@ -452,7 +452,7 @@ class AdminBlogPostController extends ModuleAdminController
 		$result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
 		$output = "";
 		foreach($result as $res){
-			$output .= $res['related_category_id'] . ",";
+			$output .= $res['id_smart_blog_category'] . ",";
 		}
 		$output = rtrim($output,",");
 		return $output;
