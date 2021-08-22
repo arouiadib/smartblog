@@ -466,13 +466,13 @@ class AdminBlogCategoryController extends AdminController {
 
 		if ( isset( $_FILES['category_image'] ) && isset( $_FILES['category_image']['tmp_name'] ) && ! empty( $_FILES['category_image']['tmp_name'] ) ) {
 			if ( $error = ImageManager::validateUpload( $_FILES['category_image'], 4000000 ) ) {
-				return $this->displayError( $this->l( 'Invalid image' ) );
+				return Tools::displayError( $this->l( 'Invalid image' ) );
 			} else {
 				$ext       = Tools::substr( $_FILES['category_image']['name'], strrpos( $_FILES['category_image']['name'], '.' ) + 1 );
 				$file_name = $id . '.' . $ext;
 				$path      = _PS_MODULE_DIR_ . 'smartblog/images/category/' . $file_name;
 				if ( ! move_uploaded_file( $_FILES['category_image']['tmp_name'], $path ) ) {
-					return $this->displayError( $this->l( 'An error occurred while attempting to upload the file.' ) );
+					return Tools::displayError( $this->l( 'An error occurred while attempting to upload the file.' ) );
 				} else {
 					if ( Configuration::hasContext( 'category_image', null, Shop::getContext() ) && Configuration::get( 'BLOCKBANNER_IMG' ) != $file_name ) {
 						@unlink( dirname( __FILE__ ) . '/' . Configuration::get( 'BLOCKBANNER_IMG' ) );
