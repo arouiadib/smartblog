@@ -447,7 +447,7 @@ class AdminBlogPostController extends ModuleAdminController
 	}
 
 	private function getSelectedCategory($id_blog){
-		$sql = 'SELECT DISTINCT(`related_category_id`) FROM `' . _DB_PREFIX_ . 'smart_blog_category_related` WHERE `id_smart_blog_post` = "'.$id_blog.'"';
+		$sql = 'SELECT DISTINCT(`id_smart_blog_category`) FROM `' . _DB_PREFIX_ . 'smart_blog_post_category` WHERE `id_smart_blog_post` = "'.$id_blog.'"';
 
 		$result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
 		$output = "";
