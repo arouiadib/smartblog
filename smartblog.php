@@ -682,6 +682,8 @@ class smartblog extends Module
 				$tab->delete();
 			}
 		endforeach;
+
+		/*
 		$sql = array();
 		include_once dirname(__FILE__) . '/sql/uninstall.php';
 		foreach ($sql as $s) :
@@ -689,6 +691,7 @@ class smartblog extends Module
 				return false;
 			}
 		endforeach;
+        */
 
 		// $this->SmartHookDelete();
 		$this->deletequickaccess();
