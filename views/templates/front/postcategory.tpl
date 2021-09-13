@@ -66,13 +66,13 @@
     {else}
       {if $smartdisablecatimg == '1'}
         {assign var="activeimgincat" value='0'}
-          {$activeimgincat = $smartshownoimg} 
-          {if $title_category != ''}        
+          {$activeimgincat = $smartshownoimg}
+          {if $title_category != ''}
             {foreach from=$categoryinfo item=category}
-              <div id="sdsblogCategory" class="smartg-blog-category-banner-area"> 
-                  <div class="smartg-blog-category-banner-images-and-content"> 
-                    {if $cat_image == "no" } 
-                    {else} 
+              <div id="sdsblogCategory" class="smartg-blog-category-banner-area">
+                  <div class="smartg-blog-category-banner-images-and-content">
+                    {if $cat_image == "no" }
+                    {else}
                       {if ($cat_image != "no" && $activeimgincat == 0) || $activeimgincat == 1}
                         <img alt="{$category.meta_title|escape:'htmlall':'UTF-8'}" src="{$cat_image}" class="imageFeatured">
                       {/if}
@@ -87,9 +87,9 @@
                         {$category.description|nl2br nofilter}
                       </div>
                     </div>
-                  </div>  
+                  </div>
               </div>
-            {/foreach} 
+            {/foreach}
           {/if}
         {/if}
         <div id="smartblogcat" class="block">
@@ -102,12 +102,12 @@
             <div class="post-page col-md-12">
               <div id="pagination_bottom" class="col-md-6">
                 <ul class="pagination">
-                  {for $k=0 to $pagenums} 
+                  {for $k=0 to $pagenums}
                     {if ($k+1) == $c}
                       <li><span class="page-link page-active"><span>{$k+1|escape:'htmlall':'UTF-8'}</span></span></li>
                     {else}
                       {if $title_category != ''}
-                        <li><a class="page-link" href="{$smartbloglink->getSmartBlogCategoryPagination($id_category,$cat_link_rewrite,$k+1)|escape:'htmlall':'UTF-8'}"><span>{$k+1|escape:'htmlall':'UTF-8'}</span></a></li> 
+                        <li><a class="page-link" href="{$smartbloglink->getSmartBlogCategoryPagination($id_category,$cat_link_rewrite,$k+1)|escape:'htmlall':'UTF-8'}"><span>{$k+1|escape:'htmlall':'UTF-8'}</span></a></li>
                       {else}
                           <li><a class="page-link" href="{$smartbloglink->getSmartBlogListPagination($k+1)|escape:'htmlall':'UTF-8'}"><span>{$k+1|escape:'htmlall':'UTF-8'}</span></a></li>
                       {/if}
@@ -121,15 +121,15 @@
                 {l s='Showing' mod='smartblog'}
                 {if $limit_start!=0}
                 {$limit_start|escape:'htmlall':'UTF-8'}
-                {else}1{/if} {l s='to' mod='smartblog'} 
+                {else}1{/if} {l s='to' mod='smartblog'}
                   {if $limit_start+$limit >= $total}
                   {$total|escape:'htmlall':'UTF-8'}
                   {else}
                     {$limit_start+$limit|escape:'htmlall':'UTF-8'}
-                  {/if} 
-                  {l s='of' mod='smartblog'} 
-                  {$total|escape:'htmlall':'UTF-8'} 
-                  ({$c|escape:'htmlall':'UTF-8'} 
+                  {/if}
+                  {l s='of' mod='smartblog'}
+                  {$total|escape:'htmlall':'UTF-8'}
+                  ({$c|escape:'htmlall':'UTF-8'}
                 {l s='Pages' mod='smartblog'})
               </div>
             </div>

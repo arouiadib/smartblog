@@ -31,7 +31,7 @@
 		        <a href="{$breadcrumb.links[0].url}">
 		          <span>{$breadcrumb.links[0].title}</span>
 		        </a>
-		      </li> 
+		      </li>
 		      <li>
 		        <a href="{smartblog::GetSmartBlogLink('module-smartblog-list')}">
 		        <span>{l s='All Post' mod='smartblog'}</span>
@@ -39,7 +39,7 @@
 		      </li>
 		      {if $title_category != ''}
 		     {assign var="link_detail" value=null}
-		    {$link_detail.id_post = $id_post} 
+		    {$link_detail.id_post = $id_post}
 		    {$link_detail.slug = $link_rewrite_}
 		      <li>
 		        <a href="{smartblog::GetSmartBlogLink('smartblog_post_rule',$link_detail)}">
@@ -91,18 +91,18 @@
 						</span>
 						<a title="" style="display:none" itemprop="url" href="#"></a>
 					</div>
-				</div>	  
+				</div>
 				<div itemprop="articleBody">
-					<div class="articleContent">                    
+					<div class="articleContent">
 	                    {if isset($ispost) && !empty($ispost)}
 	                   		<a itemprop="url" href="{$smartbloglink->getSmartBlogPostLink($post.id_post,$post.cat_link_rewrite)|escape:'htmlall':'UTF-8'}" title="{$post.meta_title|escape:'htmlall':'UTF-8'}" class="imageFeaturedLink">
 	                    {/if}
 
 	                    {if $smartbloglink->getImageLink($post.link_rewrite, $post.id_post, 'single-default') != 'false'}
-						
-	                        <img itemprop="image" alt="{$post.meta_title|escape:'htmlall':'UTF-8'}" src="{$smartbloglink->getImageLink($post.link_rewrite, $post.id_post, 'single-default')}" class="imageFeatured">                   
+
+	                        <img itemprop="image" alt="{$post.meta_title|escape:'htmlall':'UTF-8'}" src="{$smartbloglink->getImageLink($post.link_rewrite, $post.id_post, 'single-default')}" class="imageFeatured">
 	                    {/if}
-	                           
+
 	                    {if isset($ispost) && !empty($ispost)}
 	                    	</a>
 	                    {/if}
@@ -111,14 +111,14 @@
 	                   	</div>
 	                   {$displayBackOfficeSmartBlog}
 	            	</div>
-	                   
+
 	            	<div class="sdsarticle-des"></div>
 	            	{if $tags != ''}
 		                <div class="sdstags-update smart-blog-post-tags">
-		                    <span class="tags"><span>{l s='Tags:' mod='smartblog'} </span> 
+		                    <span class="tags"><span>{l s='Tags:' mod='smartblog'} </span>
 		                        {foreach from=$tags item=tag}
 		                          <a class="smart-blog-single-tag-item" title="tag" href="{$smartbloglink->getSmartBlogTag($tag.slug)|escape:'htmlall':'UTF-8'}">{$tag.name|escape:'htmlall':'UTF-8'}</a>
-		                        
+
 		                        {/foreach}
 		                    </span>
 		                </div>
@@ -152,7 +152,7 @@
 		{if $countcomment != ''}
 			<div id="articleComments" class="smart-blog-post-comments-view-area">
         		<h3 class="smart-blog-comments-title">{if $countcomment != ''}{$countcomment|escape:'htmlall':'UTF-8'}{else}{l s='0' mod='smartblog'}{/if}{l s=' Comments' mod='smartblog'}<span></span></h3>
-   				 <div id="comments">      
+   				 <div id="comments">
         			<ul class="commentList smart-blog-post-list">
               			{$i=1}
        					{foreach from=$comments item=comment}
@@ -209,7 +209,7 @@
 											<div class="smart-blog-comm-row">
 												<div class="smart-blog-single-comm smart-blog-single-comm-full-width"><input type="text" tabindex="3" value="" name="website" placeholder="{l s='Website'  mod='smartblog'}" class="form-control"></div>
 											</div>
-										{/if}	
+										{/if}
 										<div class="smart-blog-comm-row">
 											<div class="smart-blog-single-comm smart-blog-single-comm-full-width"><textarea tabindex="4" placeholder="{l s='Comment'  mod='smartblog'}" class="inputContent form-control" rows="8" cols="50" name="comment"></textarea></div>
 										</div>
@@ -235,7 +235,7 @@
 						</div>
 					</div>
 				{/if}
-				
+
 				<script type="text/javascript">
 				var addComment = {
 						moveForm : function(commId, parentId, respondId, postId) {
@@ -243,7 +243,7 @@
 							var t = this, div, comm = t.I(commId), respond = t.I(respondId), cancel = t.I('cancel-comment-reply-link'), parent = t.I('comment_parent'), post = t.I('comment_post_ID');
 							if ( ! comm || ! respond || ! cancel || ! parent )
 								return;
-					                    
+
 					 		t.I('mail').value='{$is_looged_email|escape:'htmlall':'UTF-8'}';
 					 		t.I('name').value='{$is_looged_fname|escape:'htmlall':'UTF-8'}';
 							t.respondId = respondId;
@@ -298,9 +298,9 @@
 				window.onload = (event) => {
 					$('#submitComment').bind('click',function(event) {
 					event.preventDefault();
-					 
-					 
-					var data = { 'action':'postcomment', 
+
+
+					var data = { 'action':'postcomment',
 					'id_post':$('input[name=\'id_post\']').val(),
 					'comment_parent':$('input[name=\'comment_parent\']').val(),
 					'name':$('input[name=\'name\']').val(),
@@ -313,7 +313,7 @@
 						  data: data,
 						  method: 'POST',
 						  dataType: 'json',
-						  
+
 						  beforeSend: function() {
 									$('.success, .warning, .error').remove();
 									$('#submitComment').attr('disabled', true);
@@ -326,9 +326,9 @@
 									},
 							success: function(json) {
 								if (json['error']) {
-										 
+
 									$('#commentInput').before('<div class="warning">' + '<i class="icon-warning-sign icon-lg"></i>' + json['error']['common'] + '</div>');
-									
+
 									if (json['error']['name']) {
 										$('.inputName').after('<span class="error">' + json['error']['name'] + '</span>');
 									}
@@ -342,19 +342,19 @@
 										$('.smartblogcaptcha').after('<span class="error">' + json['error']['captcha'] + '</span>');
 									}
 								}
-										
+
 								if (json['success']) {
 									$('input[name=\'name\']').val('');
 									$('input[name=\'mail\']').val('');
 									$('input[name=\'website\']').val('');
 									$('textarea[name=\'comment\']').val('');
 							 		$('input[name=\'smartblogcaptcha\']').val('');
-								
+
 									$('#commentInput').before('<div class="success">' + json['success'] + '</div>');
 									setTimeout(function(){
 										$('.success').fadeOut(300).delay(450).remove();
 																},2500);
-								
+
 								}
 							}
 						} );
