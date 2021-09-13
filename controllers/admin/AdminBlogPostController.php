@@ -39,7 +39,7 @@ class AdminBlogPostController extends ModuleAdminController
 				'filter'  => false,
 				'search'  => false,
 			),
-			'image'              => array(
+			/*'image'              => array(
 				'title'   => $this->l('Image'),
 				'image'   => $this->image_dir,
 				'orderby' => false,
@@ -49,7 +49,7 @@ class AdminBlogPostController extends ModuleAdminController
 				'orderby' => false,
 				'filter'  => false,
 				'search'  => false,
-			),
+			),*/
 			'meta_title'         => array(
 				'title'   => $this->l('Title'),
 				'width'   => 440,
