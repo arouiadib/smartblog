@@ -42,7 +42,7 @@ class BlogPostCategory extends ObjectModel
     public static function getToltalByCategory($id_lang, $id_category, $limit_start, $limit)
     {
         $result = array();
-        $sql = 'SELECT * FROM ' . _DB_PREFIX_ . 'smart_blog_post_lang pl INNER JOIN 
+        $sql = 'SELECT * FROM ' . _DB_PREFIX_ . 'smart_blog_post_lang pl INNER JOIN
                 ' . _DB_PREFIX_ . 'smart_blog_post p ON pl.id_smart_blog_post=p.id_smart_blog_post INNER JOIN
                 ' . _DB_PREFIX_ . 'smart_blog_post_category pc ON p.id_smart_blog_post=pc.id_smart_blog_post
                 WHERE pl.id_lang=' . (int) $id_lang . ' and p.active = 1 AND pc.id_smart_blog_category = ' . (int) $id_category . '
@@ -70,6 +70,7 @@ class BlogPostCategory extends ObjectModel
             $result[$i]['id_post'] = $post['id_smart_blog_post'];
             $result[$i]['viewed'] = $post['viewed'];
             //$result[$i]['name'] = $post['name'];
+            $result[$i]['position'] = $post['position'];
             $result[$i]['meta_title'] = $post['meta_title'];
             $result[$i]['meta_description'] = $post['meta_description'];
             $result[$i]['short_description'] = $post['short_description'];
@@ -89,8 +90,8 @@ class BlogPostCategory extends ObjectModel
                 $result[$i]['post_img'] = 'no';
             }
             $result[$i]['created'] = $post['created'];
-            
-            
+
+
             $i++;
         }
         return $result;

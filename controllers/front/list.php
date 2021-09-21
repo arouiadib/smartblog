@@ -179,6 +179,7 @@ class smartblogListModuleFrontController extends smartblogModuleFrontController
 		}else{
 			$limit_start = 0;
 		}
+
 		$this->context->smarty->assign(
 			array(
 				'smartbloglink'        => $smartbloglink,
