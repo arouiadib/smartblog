@@ -68,6 +68,15 @@ class AdminBlogPostController extends ModuleAdminController
 				'filter'  => true,
 				'search'  => true,
 			),
+            'position'            => array(
+                'title'   => $this->l('Position'),
+                'width'   => 100,
+                'type'    => 'text',
+                'lang'    => false,
+                'orderby' => true,
+                'filter'  => true,
+                'search'  => true,
+            ),
 			'active'             => array(
 				'title'   => $this->l('Status'),
 				'width'   => '70',
@@ -212,6 +221,17 @@ class AdminBlogPostController extends ModuleAdminController
 				'title' => $this->l('Blog Post'),
 			),
 			'input'  => array(
+                array(
+                    'type'     => 'text',
+                    'label'    => $this->l('Position'),
+                    'name'     => 'position',
+                    'id'       => 'position',
+                    //'class'    => '',
+                    'size'     => 10,
+                    'required' => true,
+                    'desc'     => $this->l('Enter Your Blog Post Position'),
+                    'lang'     => false,
+                ),
 				array(
 					'type'     => 'text',
 					'label'    => $this->l('Blog Title'),
