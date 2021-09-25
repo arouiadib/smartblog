@@ -69,14 +69,14 @@ class smartblogDetailsModuleFrontController extends smartblogModuleFrontControll
 		if($is_crazy_admin == 'extended'){
 			$id_post = pSQL( Tools::getvalue( 'id_post' ) );
 		}else{
-			
+
 			switch ( $smartblogurlpattern ) {
 
 				case 1:
 					$SmartBlog = new smartblog();
 					$slug      = Tools::getValue( 'slug' );
 					$id_post   = $SmartBlog->slug2id( $slug );
-	
+
 					break;
 				case 2:
 					$id_post = pSQL( Tools::getvalue( 'id_post' ) );
@@ -84,7 +84,7 @@ class smartblogDetailsModuleFrontController extends smartblogModuleFrontControll
 				case 3:
 					$id_post = pSQL( Tools::getvalue( 'id_post' ) );
 					break;
-	
+
 				default:
 					$id_post = pSQL( Tools::getvalue( 'id_post' ) );
 			}
@@ -151,9 +151,9 @@ class smartblogDetailsModuleFrontController extends smartblogModuleFrontControll
 				$post_img = 'no';
 			}
 
-			$posts_previous = SmartBlogPost::getPreviousPostsById($id_lang, $id_post);
+			$posts_previous = SmartBlogPost::getPreviousPostsById($id_lang, $this->post->position);
 
-			$posts_next = SmartBlogPost::getNextPostsById($id_lang, $id_post);
+			$posts_next = SmartBlogPost::getNextPostsById($id_lang, $this->post->position);
 
 			/* Server Params */
 			$protocol_link    = (Configuration::get('PS_SSL_ENABLED')) ? 'https://' : 'http://';
@@ -308,7 +308,7 @@ class smartblogDetailsModuleFrontController extends smartblogModuleFrontControll
 		$id_lang        = (int) Configuration::get('PS_LANG_DEFAULT');
 		$to             = Configuration::get('PS_SHOP_EMAIL');
 		$contactMessage = "
-				$comment 
+				$comment
 				Name: $name
 				IP: " . ((version_compare(_PS_VERSION_, '1.3.0.0', '<')) ? $_SERVER['REMOTE_ADDR'] : Tools::getRemoteAddr());
 		if (Mail::Send(
@@ -353,7 +353,7 @@ class smartblogDetailsModuleFrontController extends smartblogModuleFrontControll
 	public static function getCategoryDetail($id)
 	{
 		$id_lang = (int) Context::getContext()->language->id;
-		$sql     = 'SELECT * FROM ' . _DB_PREFIX_ . 'smart_blog_category_lang pl, ' . _DB_PREFIX_ . 'smart_blog_category p 
+		$sql     = 'SELECT * FROM ' . _DB_PREFIX_ . 'smart_blog_category_lang pl, ' . _DB_PREFIX_ . 'smart_blog_category p
                        WHERE pl.id_smart_blog_category=p.id_smart_blog_category AND p.id_smart_blog_category=' . (int) $id . ' AND pl.id_lang = ' . (int) $id_lang;
 		if (!$result = Db::getInstance()->executeS($sql)) {
 			return false;

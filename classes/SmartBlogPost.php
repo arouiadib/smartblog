@@ -1169,25 +1169,34 @@ class SmartBlogPost extends ObjectModel
 		}
 	}
 
-	public static function getNextPostsById($id_lang = null, $id_post = null)
+	public static function getNextPostsById($id_lang = null, $position =  0)
 	{
 
-		$sql = 'SELECT  p.id_smart_blog_post,pl.meta_title,pl.link_rewrite FROM ' . _DB_PREFIX_ . 'smart_blog_post p INNER JOIN
-                ' . _DB_PREFIX_ . 'smart_blog_post_lang pl ON p.id_smart_blog_post=pl.id_smart_blog_post
-                WHERE pl.id_lang=' . (int) $id_lang . '  AND p.active = 1 AND p.id_smart_blog_post = ' . (int) $id_post . '+1';
+		$sql = 'SELECT  p.id_smart_blog_post, pl.meta_title, pl.link_rewrite
+                FROM ' . _DB_PREFIX_ . 'smart_blog_post p
+                INNER JOIN ' . _DB_PREFIX_ . 'smart_blog_post_lang pl
+                ON p.id_smart_blog_post=pl.id_smart_blog_post
+                WHERE pl.id_lang=' . (int) $id_lang . '
+                AND p.active = 1
+                AND p.position = ' . (int) $position . ' + 1';
 
 		if (!$posts_next = Db::getInstance()->executeS($sql)) {
 			return false;
 		}
+
 		return $posts_next;
 	}
 
-	public static function getPreviousPostsById($id_lang = null, $id_post = null)
+	public static function getPreviousPostsById($id_lang = null, $position =  0)
 	{
 
-		$sql = 'SELECT  p.id_smart_blog_post,pl.meta_title,pl.link_rewrite FROM ' . _DB_PREFIX_ . 'smart_blog_post p INNER JOIN
-                ' . _DB_PREFIX_ . 'smart_blog_post_lang pl ON p.id_smart_blog_post=pl.id_smart_blog_post
-                WHERE pl.id_lang=' . (int) $id_lang . '  AND p.active = 1 AND p.id_smart_blog_post = ' . (int) $id_post . '-1';
+		$sql = 'SELECT  p.id_smart_blog_post, pl.meta_title, pl.link_rewrite
+                FROM ' . _DB_PREFIX_ . 'smart_blog_post p
+                INNER JOIN ' . _DB_PREFIX_ . 'smart_blog_post_lang pl
+                ON p.id_smart_blog_post=pl.id_smart_blog_post
+                WHERE pl.id_lang=' . (int) $id_lang . '
+                AND p.active = 1
+                AND p.position = ' . (int) $position . '- 1';
 
 		if (!$posts_previous = Db::getInstance()->executeS($sql)) {
 			return false;
