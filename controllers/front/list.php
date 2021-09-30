@@ -66,9 +66,12 @@ class smartblogListModuleFrontController extends smartblogModuleFrontController
 		$BlogPostCategory    = new BlogPostCategory();
 		$smartblogurlpattern = (int) Configuration::get('smartblogurlpattern');
 
-		$orderby     = Configuration::get('sborderby');
-		$order = Configuration::get('sborder');
+		// Ordering  articles by position
+		//$orderby     = Configuration::get('sborderby');
+		//$order = Configuration::get('sborder');
 
+		$orderby = 'position';
+        $order = 'ASC';
 
 		// now we will check whihc option we need to url rewrite
 		switch ($smartblogurlpattern) {

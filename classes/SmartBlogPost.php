@@ -299,7 +299,7 @@ class SmartBlogPost extends ObjectModel
 
 	public static function getAllPost($id_lang = null, $limit_start, $limit, $orderby = "id_smart_blog_post", $order = "DESC")
 	{
-		if ($id_lang == null) {
+	    if ($id_lang == null) {
 			$id_lang = (int) Context::getContext()->language->id;
 		}
 		if ($limit_start == '' || $limit_start < 0) {
@@ -321,7 +321,9 @@ class SmartBlogPost extends ObjectModel
                 ' . _DB_PREFIX_ . 'smart_blog_post_lang pl ON p.id_smart_blog_post=pl.id_smart_blog_post INNER JOIN
                 ' . _DB_PREFIX_ . 'smart_blog_post_shop ps ON pl.id_smart_blog_post = ps.id_smart_blog_post AND ps.id_shop = ' . (int) Context::getContext()->shop->id . '
                 WHERE pl.id_lang=' . (int) $id_lang . '
-                AND p.active= 1 ORDER BY '. $orderby .' ' . $order . ' LIMIT ' . (int) $limit_start . ',' . (int) $limit;
+                AND p.active= 1
+                ORDER BY '. $orderby .' ' . $order . '
+                LIMIT ' . (int) $limit_start . ',' . (int) $limit;
 
 		if (!$posts = Db::getInstance()->executeS($sql)) {
 			return false;
