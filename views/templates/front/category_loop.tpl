@@ -23,7 +23,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-<div itemtype="#" itemscope="" class="sdsarticleCat clearfix">
+<div itemscope="" class="sdsarticleCat clearfix">
     <div id="smartblogpost-{$post.id_post|escape:'htmlall':'UTF-8'}" class="smart-blog-post-single-item">
         <div class="sdsarticleHeader smart-blog-posts-header-area">
             <p class='title_block smart-blog-posts-title'><a title="{$post.meta_title|escape:'htmlall':'UTF-8'}"
