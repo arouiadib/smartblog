@@ -1,14 +1,4 @@
-# SmartBlog
+# SmartBlog with some bugs fixed for PS 1.7.7.5
 
-The best blog module for PrestaShop
+This is the SmartBlog free module by classydev with some additionnal commits that aim to fixing some bugs when installed in PS 1775.
 
-Our main development branch is for 1.7.x and Other branch 1.6.1.x for PrestaShop 1.6.1.x version. 
-
-
-After a long time we SmartDataSoft is back to dedicated PrestaShop development as [ClassyDevs](https://classydevs.com/?utm_source=sbloggithub&utm_medium=sbloggithubredmi&utm_campaign=sbloggithubredmi). 
-
-
-# Check out [Classy Product Extra Tabs](https://classydevs.com/free-modules/classy-product-extra-tab/?utm_source=sbloggithub&utm_medium=sbloggithubredmi&utm_campaign=sbloggithubredmi) 
-The best FREE module to add extra tabs to the products of you PrestaShop site.
-
-<a href="https://classydevs.com/free-modules/classy-product-extra-tab/?utm_source=sbloggithub&utm_medium=sbloggithubredmi&utm_campaign=sbloggithubredmi" target="_blank"><img src="Frame 8.png" alt="Logo" width="500" height="500"></a>
